@@ -8,7 +8,7 @@ pnpm-debug.log*
 lerna-debug.log*
 
 node_modules
-./ele-h5
+#./ele-h5
 dist
 dist-ssr
 *.local
