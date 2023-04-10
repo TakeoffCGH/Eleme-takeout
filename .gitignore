@@ -12,7 +12,7 @@ node_modules
 dist
 dist-ssr
 *.local
-./ele-h5-server/node_modules
+#./ele-h5-server/node_modules
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
