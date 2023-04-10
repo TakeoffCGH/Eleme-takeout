@@ -10,4 +10,11 @@ export default defineConfig({
           "@": normalizePath(path.resolve("./src")),
         },
       },
+      server:{
+        port:3000,
+        proxy:{
+          '/api':'http://localhost:8000',
+          '/imgs':'http://localhost:8000'
+        }
+      }
 })

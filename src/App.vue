@@ -1,11 +1,11 @@
 <script setup lang="ts">
   import {RouterView} from 'vue-router'
-  // import TabsView from './views/TabsView.vue';
+  import {fetchTest} from '@/api/test'
+  fetchTest()
 </script>
 
 <template>
   <div>
-    <!-- <TabsView/> -->
     <RouterView/>
   </div>
 
