@@ -6,16 +6,20 @@
         recomments:ISearchRecomment[]
     }
     defineProps<IProps>()
+    interface IEmits{
+        (e:'searchClick'):void
+    }
+    const emits = defineEmits<IEmits>()
     let searchValue = ref('test')
-    const onSearch = (v:string|number) => {
-        console.log('===search',v)
-    }
-    const onCancel = () => {
-        console.log('===cancel')
-    }
-    const onClear  = ()  => {
-        console.log('===clear')
-    }
+    // const onSearch = (v:string|number) => {
+    //     console.log('===search',v)
+    // }
+    // const onCancel = () => {
+    //     console.log('===cancel')
+    // }
+    // const onClear  = ()  => {
+    //     console.log('===clear')
+    // }
 </script>
 
 <template>
@@ -37,18 +41,15 @@
         </VanSearch> -->
 
         <OpSearch
-            show-action
             v-model="searchValue"
             shape="round"
             background="linear-gradient(to right,rgb(53,200,250),rgb(31,175,243)"
             placeholder="世界茶饮 35减2"
-            @search="onSearch"
-            @cancel="onCancel"
-            @clear="onClear"
+            @inputClick = "emits('searchClick')"
         >
-            <!-- <template #right-icon>
-                <div>搜索</div>
-            </template> -->
+            <template #right-icon>
+                <div @click="emits('searchClick')">搜索</div>
+            </template>
         </OpSearch>
         <div class="search-recommend">
             <div v-for="v in  recomments" :key="v.value" class="tag">{{ v.label }}</div>
