@@ -18,11 +18,20 @@ const [isSearchViewShown,toggleSearchView] = useToggle(false)
 
 <template>
     <div class="home-page">
-        <SearchView v-if="isSearchViewShown" @cancel="toggleSearchView"/>
+        <Transition name="fade">
+            <SearchView v-if="isSearchViewShown" @cancel="toggleSearchView"/>
+        </Transition>
         <TheTop :recomments="recomments" @searchClick="toggleSearchView"/>
     </div>
 </template>
 
-<style scoped>
-    
+<style lang = 'scss' scoped>
+    .fade-enter-active,
+    .fade-leave-active{
+        transition: opacity 0.5s ease;
+    }
+    .fade-enter-from,
+    .fade-leave-to{
+        opacity: 0;
+    }
 </style>
