@@ -4,6 +4,7 @@
     import { fetchSearchData } from '@/api/search';
     import { ISearchResult } from '@/types';
     import { useToggle } from '@/use/useToggle';
+    import { useDebounce } from '@/use/useDebounce'
     interface IEmits{
         (e:'cancel'):void
     }
@@ -43,12 +44,23 @@
         searchValue.value = v
         onSearch(v)
     }
-    watch(searchValue,(nv)=>{
-        if(!nv){
-            searchResult.value=[]
-            return
-        }
-        onSearch(nv as string)
+    // watch(
+    //     searchValue,
+    //     useDebounce((nv)=>{
+    //         if(!nv){
+    //             searchResult.value=[]
+    //             return
+    //         }
+    //         onSearch(nv as string)
+    //         },1000)
+    //     )
+    const debounceValue = useDebounce(searchValue, 1000)
+    watch(debounceValue, (nv) => {
+    if (!nv) {
+        searchResult.value = []
+        return
+    }
+    onSearch(nv as string)
     })
 </script>
 
