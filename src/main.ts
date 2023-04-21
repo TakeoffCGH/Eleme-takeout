@@ -3,13 +3,15 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import router from '@/router/index'
 import 'vant/lib/index.css'
-import {Tabbar,TabbarItem,Search,Icon} from 'vant'
+import {Tabbar,TabbarItem,Search,Icon,Skeleton,Loading} from 'vant'
 const app = createApp(App);
 app.use(Tabbar);
 app.use(TabbarItem);
 app.use(Search);
 app.use(Icon)
 app.use(router)
+app.use(Skeleton)
+app.use(Loading)
 
 
 const rootValue = 16
