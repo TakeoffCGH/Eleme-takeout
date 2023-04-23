@@ -6,6 +6,8 @@ import { useAsync } from '@/use/useAsync'
 import { fetchHomePageData } from '@/api/home';
 import { ICountdown, IHomeInfo } from '@/types';
 import OpLoadingView from '@/components/OpLoadingView.vue';
+import TheTransformer from '@/components/TheTransform.vue'
+import ScrollBar from './components/ScrollBar.vue'
 const recomments = [
     {
         value:1,
@@ -24,8 +26,7 @@ const { data,pending } = useAsync(fetchHomePageData,{
     scrollBarInfoList:[],
     countdown:{} as ICountdown,
     activities:[]
-
-} as IHomeInfo)
+})
 </script>
 
 
@@ -36,9 +37,11 @@ const { data,pending } = useAsync(fetchHomePageData,{
         </Transition>
         <TheTop :recomments="recomments" @searchClick="toggleSearchView"/>
         <OpLoadingView :loading="pending" type="skeleton" >
-            <div>
-                
+            <div class="home-page__banner">
+                <img v-for="v in data.banner" :key="v.imgUrl" :src="v.imgUrl">
             </div>
+            <TheTransformer :data="data.transformer"/>
+            <ScrollBar :data="data.scrollBarInfoList"/>
         </OpLoadingView>
         
     </div>
@@ -52,5 +55,17 @@ const { data,pending } = useAsync(fetchHomePageData,{
     .fade-enter-from,
     .fade-leave-to{
         opacity: 0;
+    }
+    .home-page{
+        background:  rgb(245, 245, 245);
+        padding-bottom: 70px;
+
+        &__banner{
+            img{
+                width: 100%;
+                padding-top: 10px;
+                background: white;
+            }
+        }
     }
 </style>

@@ -4,6 +4,7 @@ import App from './App.vue'
 import router from '@/router/index'
 import 'vant/lib/index.css'
 import {Tabbar,TabbarItem,Search,Icon,Skeleton,Loading} from 'vant'
+import '@/assets/common.scss'
 const app = createApp(App);
 app.use(Tabbar);
 app.use(TabbarItem);
