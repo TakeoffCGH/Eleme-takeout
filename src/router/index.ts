@@ -3,6 +3,7 @@ const TabsView = () =>import('@/views/TabsView.vue')
 const HomeView = ()=>import('@/views/home/HomeView.vue')
 const OrderView = ()=>import('@/views/order/OrderView.vue')
 const MeView = ()=>import('@/views/me/MeView.vue')
+const LoginView = ()=>import('@/views/login/LoginView.vue')
 const routes = [
     {
         path:'/',
@@ -17,6 +18,11 @@ const routes = [
             {name:'order',path:'/order',component:OrderView},
             {name:'me',path:'/me',component:MeView}
         ]
+    },
+    {
+        name:'login',
+        path:'/login',
+        component:LoginView
     }
 ]
 

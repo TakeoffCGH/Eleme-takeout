@@ -48,6 +48,7 @@
 <template>
     <div class="home-scroll-bar">
       <div class="home-scroll-bar__swipe">
+
         <div ref="containerRef">
           <div class="swipe-item" v-for="v in props.data" :key="v.type">
             <div class="scroll-bar__info" :class="`scroll-bar__info__${v.type}`">
@@ -57,6 +58,7 @@
             </div>
           </div>
         </div>
+
       </div>
     </div>
   </template>
@@ -65,6 +67,7 @@
   .home-scroll-bar {
     --bean-color: rgb(252, 164, 40);
     --hongbao-color: rgb(252, 68, 25);
+
     &__swipe {
       background: white;
       border-radius: 8px;
@@ -72,7 +75,8 @@
       font-size: 13px;
       position: relative;
       overflow: hidden;  //隐藏子节点超出父节点的高度,清除内部浮动，防止高度塌陷
-      height: v-bind(heightPx); //这里有点疑问，为啥它里面的containRef比它的空间还大
+      height: v-bind(heightPx);
+
       .swipe-item {
         height: v-bind(heightPx);//vue3新属性单文件组件的 <style> 标签支持使用 v-bind CSS 函数将 CSS 的值链接到动态的组件状态
       }

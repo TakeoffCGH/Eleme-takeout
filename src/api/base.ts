@@ -1,10 +1,19 @@
 import axios from 'axios'
 import { showDialog } from 'vant'
+import { useLocalStorage } from '@/use/useLocalStorage'
 const instance = axios.create({
-    baseURL:'api'
+    baseURL:'/api'
 })
 
-// 设置请求拦截器
+instance.interceptors.request.use((config)=>{
+    const { value:token  } = useLocalStorage('token','')
+    if(config.headers && token.value){
+        config.headers['x-token'] = token.value  //后端往config.headers添加的x-token
+    }
+    return config
+})
+
+
 instance.interceptors.response.use((response)=>{
     const {data:_data} = response
     const {data,code,msg} = _data
